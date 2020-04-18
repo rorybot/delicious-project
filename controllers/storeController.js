@@ -50,9 +50,9 @@ exports.getStores = async (req,res) => {
 }
 
 exports.getStoreBySlug = async (req,res) => {
-  console.log(typeof(req.params.slug))
   const store = await Store.findOne({slug: req.params.slug})
-  res.render('viewStore', {title: store})
+  if(!store) return next();
+  res.render('viewStore', {title: store.name, store})
 }
 
 exports.editStore = async (req,res) => {
