@@ -18,13 +18,15 @@ router.post('/add/:id',
   catchErrors(storeController.resize),
   catchErrors(storeController.updateStore)
 );
-router.get('/stores/:id/edit', catchErrors(storeController.editStore))
+router.get('/stores/:id/edit', catchErrors(storeController.editStore));
 
-router.get('/stores/:slug', catchErrors(storeController.getStoreBySlug))
+router.get('/stores/:slug', catchErrors(storeController.getStoreBySlug));
 
-router.get('/tags', catchErrors(storeController.getStoresByTag))
-router.get('/tags/:tag', catchErrors(storeController.getStoresByTag))
+router.get('/tags', catchErrors(storeController.getStoresByTag));
+router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 
-router.get('/login', userController.loginForm)
+router.get('/login', userController.loginForm);
+router.get('/register', userController.registerForm);
+router.post('/register', userController.validateRegister);
 
 module.exports = router;
