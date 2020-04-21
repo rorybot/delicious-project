@@ -4,7 +4,7 @@ My knowledge of Node, like a lot of people's, has been pieced together by just b
 
 My knowledge of Mongo was a bit sketchy too, so I really wanted to clean up some confusion there. 
 
-Basically: I wanted a nice exemplar to study and build, in order to learn the real best practices when it comes to Node-ing.
+Basically: I wanted a nice exemplar to study and build, in order to learn the real best practices when it comes to Node-ing. Ostensibly it's a place for business owners to upload a pre-templated page about their shops/bars/cafes/etc, so people can find them online. Functionally it's a CRUD exemplar with user authentication, where anyone can Read (and filter through object attributes), and logged-in users can Create/Edit/Destroy stores, working off a Mongo database, with Pug templating, and Express routing (with middleware handling the waterfall movement of requests through to the final response).
 
 ## Getting Started
 
