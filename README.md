@@ -18,11 +18,6 @@ This is a fairly standard Node app, so you just need to `npm install` and `npm s
 
 
 ## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 * Node / NPM / Express for server itself and routing
 * Pug for Templating
 * Mongoose / Mongo for data storage
