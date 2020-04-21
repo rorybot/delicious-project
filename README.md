@@ -1,60 +1,21 @@
-# Project Title
+# Delicious Node - A CRUD-y Store Project
 
-One Paragraph of project description goes here
+My knowledge of Node, like a lot of people's, has been pieced together by just being set to work on an existing project, or by having to just figure things out in creating my own projects. I wanted a more schematic, robust overview, covering all the kinds of stuff I know already in Rails - e.g. separating concerns properly between middleware and controller, efficient templating, proper authentication, efficient database lookups, etc.
+
+My knowledge of Mongo was a bit sketchy too, so I really wanted to clean up some confusion there. 
+
+Basically: I wanted a nice exemplar to study and build, in order to learn the real best practices when it comes to Node-ing.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This is a fairly standard Node app, so you just need to `npm install` and `npm start` it to get it going. However, you'll also need to setup a variables.env file, however, in the root directory. You can see an example [here](https://github.com/wesbos/Learn-Node/blob/master/starter-files/variables.env.sample). You'll need a mongoDB URI for the DATABASE variable, Mailtrap credentials for the MAIL_ variables, and a Google Maps Places API key for the MAP_KEY.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+- A hosted MongoDB to connect to
+- Google Maps API key
+- Mailtrap creds (or alternative if you're happy tweaking the variables.env file and helpers/mail.js to set it up to use your preferred mail server (this isn't intended for real mail sending, just dev-style catching, but it's flexible enough to allow you to set it up with a real server if you want)
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -62,26 +23,15 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
+* Node / NPM / Express for server itself and routing
+* Pug for Templating
+* Mongoose / Mongo for data storage
+* Passport for Authentication
+* Multer for image uploads
+* Nodemailer / Juice / Mailtrap for emails
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [Wes Bos](http://github.com/wesbos/) - Of course
+* [Jay Koontz](https://github.com/jaykoontz) - Who gave me the idea to do this, and just offered a lot of encouragement when I needed it
