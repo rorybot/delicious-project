@@ -46,12 +46,14 @@ router.post('/account/reset/:token',
   authController.confirmedPasswords, catchErrors(authController.updatePassword)
 );
 
-router.get('/map', storeController.mapPage)
-router.get('/hearts', authController.isLoggedIn, catchErrors(storeController.getHearts));
+router.get('/map', storeController.mapPage);
+router.get('/hearts', authController.isLoggedIn, catchErrors(storeController.getHearts))
 router.post('/reviews/:id',
   authController.isLoggedIn,
   reviewController.addReview
-)
+);
+
+router.get('/top', catchErrors(storeController.getTopStores));
 
 /*
   API

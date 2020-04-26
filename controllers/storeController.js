@@ -136,3 +136,8 @@ exports.getHearts = async (req,res) => {
   res.render('stores', {title: `${user.name}'s Hearts`, stores})
   // const userHearts = await User.findById(req.user)
 }
+
+exports.getTopStores = async (req,res) => {
+  const stores = await Store.getTopStores();
+  res.render('topStores', {stores, title: '⭐ Top Stores!'})
+}
