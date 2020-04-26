@@ -47,8 +47,24 @@ exports.createStore = async (req,res) => {
 };
 
 exports.getStores = async (req,res) => {
-  const stores = await Store.find();
-  res.render('stores', {title: 'Stores', stores});
+  const page = req.params.page || 1;
+  const limit = 4;
+  const skip = (page*limit)-limit;
+  const storesPromise =  Store.
+    find()
+    .skip(skip)
+    .limit(limit)
+    .sort( { created: 'desc' } )
+
+  const countPromise = Store.count();
+  const [stores,count] = await Promise.all([storesPromise,countPromise])
+  const pages = Math.ceil(count / limit);
+  if(page > pages){
+    req.flash('info', `You asked for page ${page}, which is ${page-pages > 1 ? page - pages + ' pages' : '1 page' } greater than the final page of results! Maybe what you wanted was the very last page...`);
+    res.redirect(`/stores/page/${pages}`);
+    return;
+  }
+  res.render('stores', {title: 'Stores', stores, count, page, pages});
 };
 
 exports.getStoreBySlug = async (req,res) => {
