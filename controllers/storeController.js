@@ -52,7 +52,7 @@ exports.getStores = async (req,res) => {
 };
 
 exports.getStoreBySlug = async (req,res) => {
-  const store = await Store.findOne({slug: req.params.slug})
+  const store = await Store.findOne({slug: req.params.slug}).populate('author reviews');
   if(!store) return next();
   res.render('viewStore', {title: store.name, store});
 };

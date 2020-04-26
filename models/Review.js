@@ -27,6 +27,17 @@ const reviewSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+}, {
+  toJSON: {virtuals: true},
+  toObject: {virtuals: true}
 });
+
+function autopopulate(next){
+  this.populate('author');
+  next();
+}
+
+reviewSchema.pre('find', autopopulate);
+reviewSchema.pre('findOne', autopopulate);
 
 module.exports = mongoose.model('Review', reviewSchema);
