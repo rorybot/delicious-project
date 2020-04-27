@@ -22,6 +22,7 @@ router.post('/add/:id',
   catchErrors(storeController.updateStore)
 );
 router.get('/stores/:id/edit', catchErrors(storeController.editStore));
+router.post('/stores/:id/delete', catchErrors(storeController.deleteStore));
 
 router.get('/stores/:slug', catchErrors(storeController.getStoreBySlug));
 

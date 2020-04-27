@@ -157,3 +157,11 @@ exports.getTopStores = async (req,res) => {
   const stores = await Store.getTopStores();
   res.render('topStores', {stores, title: '⭐ Top Stores!'})
 }
+
+exports.deleteStore = async(req,res) => {
+  const store = await Store.findOne({_id: req.params.id}, function(err, doc){
+    doc ? doc.remove() : err
+  })
+    req.flash('success', `Successfully deleted  ${store.name}.`);
+  res.redirect('/stores');
+}
