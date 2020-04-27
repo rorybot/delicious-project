@@ -142,7 +142,7 @@ exports.heartStore = async (req,res) => {
     {[operator]: { hearts: req.params.id }},
     { new: true }
   )
-  res.json(user);
+  res.redirect('back');
 }
 
 exports.getHearts = async (req,res) => {
