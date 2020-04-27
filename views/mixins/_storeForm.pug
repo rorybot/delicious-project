@@ -22,3 +22,14 @@ mixin storeForm(store = {})
           input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice)= choice
     input(type="Submit" value="Save →" class="button")
+    
+
+  block foobar
+    if store.name
+        form(action=`/stores/${store._id}/delete` method="POST"  class="card" enctype="multipart/form-data")
+          input(type="Submit" value="Delete!" class="button")
+        
+    
+    
+    
+        
