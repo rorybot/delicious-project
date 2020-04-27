@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
+const Review = mongoose.model('Review');
 
 const storeSchema = new mongoose.Schema({
   name: {
@@ -48,15 +49,27 @@ storeSchema.index({
 storeSchema.index({location: '2dsphere'});
 
 storeSchema.pre('save', async function(next){
-  if(!this.isModified('name')){
-    next();
-    return;
-  }
+  if(!this.isModified('name')) return next();
+
   this.slug = slug(this.name);
   const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
   const storesWithSlug = await this.constructor.find({ slug: slugRegEx });
   if(storesWithSlug.length){
     this.slug = `${this.slug}-${storesWithSlug.length+1}`
+  }
+  next();
+});
+
+storeSchema.pre('findOneAndUpdate', async function(next){
+  const docToUpdate = await this.model.findOne(this.getQuery());
+
+  if(this._update.name === docToUpdate.name) return next();
+
+  this._update.slug = slug(this._update.name);
+  const slugRegEx = new RegExp(`^(${this._update.slug})((-[0-9]*$)?)$`, 'i');
+  const storesWithSlug = await this.model.find({ slug: slugRegEx });
+  if(storesWithSlug.length){
+    this._update.slug = `${this._update.slug}-${storesWithSlug.length+1}`
   }
   next();
 })
@@ -94,9 +107,14 @@ function autopopulate(next){
   next();
 }
 
+function deleteReviews(next){
+  Review.remove({store: this._id}).exec();
+  next();
+}
+
 storeSchema.pre('find', autopopulate);
 storeSchema.pre('findOne', autopopulate);
-
-
+storeSchema.pre('remove', deleteReviews);
+// storeSchema.pre('findOneAndUpdate', updateHooks)
 
 module.exports = mongoose.model('Store', storeSchema);
