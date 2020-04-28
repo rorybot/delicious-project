@@ -1,3 +1,7 @@
+# Visit the live application [here](https://delicious.rorybot.com/)!
+
+Just hop on and setup an account and give it a spin.
+
 # Delicious Node Project - a Yelp-style CRUD-y site 
 
 My knowledge of Node, like a lot of people's, has been pieced together by just being set to work on an existing project, or by having to just figure things out in creating my own projects. I wanted a more schematic, robust overview, covering all the kinds of stuff I know already in Rails - e.g. separating concerns properly between middleware and controller, efficient templating, proper authentication, efficient database lookups, etc.
